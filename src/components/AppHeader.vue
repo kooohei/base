@@ -9,11 +9,11 @@ const close = () => appWindow.close()
 <template lang="pug">
 div.titlebar(data-tauri-drag-region)
   div.titlebar-button(@click="minimize")
-    img.icon(src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize")
+    i.tsr.ts-chrome-minimize
   div.titlebar-button(@click="maximize")
-    img.icon(src="https://api.iconify.design/mdi:window-maximize.svg" alt="maximize")
+    i.tsr.ts-chrome-maximize
   div.titlebar-button.close(@click="close")
-    img.icon(src="https://api.iconify.design/mdi:close.svg" alt="close")
+    i.tsr.ts-chrome-close
 </template>
 
 <style lang="stylus" scoped>
@@ -33,9 +33,8 @@ div.titlebar
   width 1.8rem
   height 1.8rem
   
-  img.icon
-    width 1rem
-    height 1rem
+  i
+    font-size .5rem
     
 
 .titlebar-button:hover

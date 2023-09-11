@@ -6,6 +6,7 @@
 
 use tauri::Manager;
 use window_vibrancy::{apply_blur};
+use window_shadows::set_shadow;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -14,8 +15,6 @@ fn greet(name: &str) -> String {
 }
 
 fn main() {
-            
-
     tauri::Builder::default()
         .setup(|app| {
             let win = app.get_window("main").unwrap();
@@ -27,6 +26,10 @@ fn main() {
             #[cfg(target_os = "windows")]
             apply_blur(&win, Some((10, 10, 10, 125)))
                 .expect("Unsupported platform! 'apply_blur' is only supported on Windows");
+
+            #[cfg(any(windows, target_os = "macos"))]
+            set_shadow(&win, true).unwrap();
+
 
             Ok(())
         })
